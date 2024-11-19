@@ -1,0 +1,279 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ThriftsByZee - Home</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* Root color variables */
+        :root {
+            --rosewood: #65000b;
+            --salmon: #fa8072;
+            --black: #000;
+            --light-gray: #f4f4f4;
+        }
+
+        /* General body styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: var(--light-gray);
+            color: var(--black);
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        /* Sticky Navbar */
+        .navbar {
+            background-color: var(--black);
+            padding: 1rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 10;
+            transition: background-color 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            background-color: var(--rosewood);
+        }
+
+        .navbar-brand {
+            color: #fff !important;
+            font-size: 1.8rem;
+            letter-spacing: 2px;
+        }
+
+        .nav-link {
+            color: #fff !important;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            margin-left: 15px;
+        }
+
+        /* Full-screen Hero Section */
+        .hero-section {
+            height: 100vh;
+            background-image: url('https://example.com/fashion-bg.jpg'); /* Replace with actual image or video */
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5); /* Dark overlay for contrast */
+            z-index: -1;
+        }
+
+        .hero-text h1 {
+            font-size: 4rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            animation: fadeInDown 1s ease-in-out;
+        }
+
+        .hero-text p {
+            font-size: 1.2rem;
+            margin: 20px 0;
+            font-weight: 300;
+            animation: fadeInUp 1.5s ease-in-out;
+        }
+
+        .hero-text .btn-shop {
+            background-color: var(--salmon);
+            color: #fff;
+            padding: 12px 30px;
+            font-size: 1rem;
+            border-radius: 30px;
+            animation: fadeInUp 2s ease-in-out;
+            transition: all 0.3s ease;
+        }
+
+        .btn-shop:hover {
+            background-color: var(--rosewood);
+        }
+
+        /* Keyframes for smooth fade-in effect */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Smooth scrolling for navigation */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Collection Section */
+        .collection-section {
+            padding: 100px 0;
+            text-align: center;
+            background-color: var(--light-gray);
+        }
+
+        .collection-section h2 {
+            font-size: 2.5rem;
+            color: var(--rosewood);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            animation: fadeInUp 1s ease-in-out;
+        }
+
+        .collection-section .card {
+            border: none;
+            transition: transform 0.3s ease;
+            overflow: hidden;
+            animation: fadeIn 1.2s ease-in-out;
+        }
+
+        .card img {
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .card img:hover {
+            transform: scale(1.1);
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--black);
+            color: #fff;
+            padding: 40px 0;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        .footer a {
+            color: var(--salmon);
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+
+        .footer a:hover {
+            color: var(--rosewood);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Sticky Navbar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="#"> <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
+              <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l.84 4.479 9.144-.459L13.89 4zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
+            </svg> ThriftsByZee</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url "interactive_page" %}">Explore</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url "dress_list" %}">Collections</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url "about" %}">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="hero-text">
+            <h1>Welcome to <span style="color: var(--salmon);">ThriftsByZee</span></h1>
+            <p>Providing you with value at minimal cost.</p>
+            <a href="{% url "dress_list" %}" class="btn btn-custom btn-lg">Shop Now</a>
+        </div>
+    </section>
+
+    <!-- Collections Section -->
+    <section id="collections" class="collection-section">
+        <div class="container">
+            <h2>Our Collections</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="{% static "store/images/dresses.jpeg" %}"  class="card-img-top" alt="Dresses">
+                        <div class="card-body">
+                            <h5 class="card-title">Dresses</h5>
+                            <a href="#" class="btn btn-shop mt-3">Shop Dresses</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="{% static "store/images/image.png" %}" height="400"class="card-img-top" alt="Tops">
+                        <div class="card-body">
+                            <h5 class="card-title">Tops</h5>
+                            <a href="#" class="btn btn-shop mt-3">Shop Tops</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="https://example.com/shoes.jpg" class="card-img-top" alt="Shoes">
+                        <div class="card-body">
+                            <h5 class="card-title">Shoes</h5>
+                            <a href="#" class="btn btn-shop mt-3">Shop Shoes</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 ThriftsByZee. All rights reserved.</p>
+            <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Navbar color change on scroll
+        $(window).scroll(function() {
+            if ($(this).scrollTop() > 50) {
+                $('.navbar').addClass('scrolled');
+            } else {
+                $('.navbar').removeClass('scrolled');
+            }
+        });
+    </script>
+
+</body>
+</html>

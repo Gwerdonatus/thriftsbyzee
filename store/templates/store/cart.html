@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-5">
+    <div class="mb-3">
+            <a href="{% url 'dress_list' %}" class="btn btn-outline-secondary">Back to Store</a>
+        </div>
+    <h2>Your Cart</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Size</th>
+                <th>Quantity</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in cart.values %}
+            <tr>
+                <td>{{ item.name }}</td>
+                <td>N{{ item.price }}</td>
+                <td>{{ item.size }}</td>
+                <td>{{ item.quantity }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{% url 'checkout' %}" class="btn btn-primary">Proceed to Checkout</a>
+</div>
+{% endblock %}

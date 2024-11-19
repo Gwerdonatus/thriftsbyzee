@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-5">
+    <h2>Checkout</h2>
+    <form method="post" action="{% url 'checkout' %}">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" class="form-control" id="email" name="email" required>
+        </div>
+        <p>Total Price: N{{ total_price }}</p>
+        <button type="submit" class="btn btn-success mt-3">Proceed to Payment</button>
+    </form>
+</div>
+{% endblock %}

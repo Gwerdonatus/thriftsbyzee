@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center">Our Collection</h2>
+    <div class="row">
+        {% for dress in dresses %}
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm">
+                <img src="{{ dress.image.url }}" class="card-img-top" alt="{{ dress.name }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ dress.name }}</h5>
+                    <p class="card-text">${{ dress.price }}</p>
+                    {% if dress.availability %}
+                    <a href="{% url 'dress_detail' dress.id %}" class="btn btn-primary">Get</a>
+                    {% else %}
+                    <span class="badge bg-secondary">Sold Out</span>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Success</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .success-message {
+            text-align: center;
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .success-message h1 {
+            color: #28a745;
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+        .success-message p {
+            font-size: 1.2em;
+            color: #343a40;
+        }
+        .btn-home {
+            margin-top: 30px;
+            background-color: #007bff;
+            color: white;
+        }
+        .btn-home:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="success-message">
+        <h1>Payment Successful</h1>
+        <p>Thank you, {{ transaction.email }}</p>
+        <p>contact: 234 745 9772 22 for your delivery</p>
+        <a href="/" class="btn btn-home btn-primary">Go to Homepage</a>
+    </div>
+
+    <!-- Bootstrap JS, Popper.js, and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
