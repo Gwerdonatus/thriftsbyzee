@@ -74,7 +74,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'ThriftByZee.wsgi.application'
+WSGI_APPLICATION = 'thriftbyzee.wsgi.application'
 
 
 # Database
