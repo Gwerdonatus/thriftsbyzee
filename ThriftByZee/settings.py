@@ -7,7 +7,7 @@ from dj_database_url import parse as db_url
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Secret Key
-SECRET_KEY = config('SECRET_KEY')  # Load from .env
+SECRET_KEY = config('SECRET_KEY')
 
 # Debug mode
 DEBUG = config('DEBUG', default=False, cast=bool)
@@ -26,13 +26,13 @@ INSTALLED_APPS = [
     'payment',
     'store',
     'support',
-    'whitenoise.runserver_nostatic',  # Optimize static files
+    'whitenoise.runserver_nostatic',
 ]
 
 # Middleware
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',  # Enable Whitenoise for static files
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -107,18 +107,18 @@ PAYSTACK_SECRET_KEY = config('PAYSTACK_SECRET_KEY')
 # Session Engine
 SESSION_ENGINE = 'django.contrib.sessions.backends.db'
 
-# Security Settings (Mandatory for Production)
-SECURE_HSTS_SECONDS = config('SECURE_HSTS_SECONDS', default=31536000, cast=int)  # Enable HTTP Strict Transport Security
+# Security Settings
+SECURE_HSTS_SECONDS = config('SECURE_HSTS_SECONDS', default=31536000, cast=int)
 SECURE_HSTS_PRELOAD = True
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 SECURE_BROWSER_XSS_FILTER = True
 SECURE_CONTENT_TYPE_NOSNIFF = True
-SECURE_SSL_REDIRECT = config('SECURE_SSL_REDIRECT', default=True, cast=bool)  # Redirect all HTTP to HTTPS
+SECURE_SSL_REDIRECT = config('SECURE_SSL_REDIRECT', default=True, cast=bool)
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
 X_FRAME_OPTIONS = 'DENY'
 
-# Logging for Render (optional)
+# Logging for Render
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
