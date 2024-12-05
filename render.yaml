@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: thriftbyzee
+    envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: thriftbyzee.settings
+    buildCommand: |
+      pip install -r requirements.txt
+      python manage.py collectstatic --noinput
+      python manage.py migrate
+    startCommand: gunicorn thriftbyzee.wsgi
+    staticPublishPath: staticfiles
