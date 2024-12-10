@@ -3,34 +3,10 @@ services:
     name: thriftbyzee
     envVars:
       - key: DJANGO_SETTINGS_MODULE
-        value: thriftbyzee.settings  
-      - key: SECRET_KEY
-        value: ${SECRET_KEY}  
-      - key: PAYSTACK_PUBLIC_KEY
-        value: ${PAYSTACK_PUBLIC_KEY} 
-        value: ${PAYSTACK_SECRET_KEY} 
-      - key: DEBUG
-        value: ${DEBUG}  
-      - key: ALLOWED_HOSTS
-        value: ${ALLOWED_HOSTS} 
-      - key: DATABASE_URL
-        value: ${DATABASE_URL}  )
-      - key: SECURE_HSTS_SECONDS
-        value: ${SECURE_HSTS_SECONDS}  
-      - key: SECURE_SSL_REDIRECT
-        value: ${SECURE_SSL_REDIRECT}  # Redirects to HTTPS in production
-      - key: CLOUDINARY_CLOUD_NAME
-        value: ${CLOUDINARY_CLOUD_NAME}  
-      - key: CLOUDINARY_API_KEY
-        value: ${CLOUDINARY_API_KEY}  # Cloudinary API key
-      - key: CLOUDINARY_API_SECRET
-        value: ${CLOUDINARY_API_SECRET}  # Cloudinary API secret
-
+        value: thriftbyzee.settings
     buildCommand: |
-      pip install -r requirements.txt  # Install required dependencies
-      python manage.py collectstatic --noinput  # Collect static files for production
-      python manage.py migrate  # Apply migrations to the database
-
-    startCommand: gunicorn thriftbyzee.wsgi:application --bind 0.0.0.0:$PORT  
-
-    staticPublishPath: staticfiles  
+      pip install -r requirements.txt
+      python manage.py collectstatic --noinput
+      python manage.py migrate
+    startCommand: gunicorn thriftbyzee.wsgi:application  # Corrected start command
+    staticPublishPath: staticfiles
