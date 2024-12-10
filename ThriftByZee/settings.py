@@ -26,16 +26,15 @@ INSTALLED_APPS = [
     'payment',
     'store',
     'support',
-    'whitenoise.runserver_nostatic', 
-    'cloudinary',
-    'cloudinary_storage',
+    'whitenoise.runserver_nostatic',  # For efficient static file serving
+    'cloudinary',  # Cloudinary for media files
+    'cloudinary_storage',  # Cloudinary storage backend
 ]
-
 
 # Middleware
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',  # To serve static files efficiently
+    'whitenoise.middleware.WhiteNoiseMiddleware',  # Static files handling
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -51,7 +50,7 @@ ROOT_URLCONF = 'ThriftByZee.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates'],  # Updated for clarity
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -70,9 +69,9 @@ WSGI_APPLICATION = 'ThriftByZee.wsgi.application'
 # Database
 DATABASES = {
     'default': config(
-        'DATABASE_URL',
+        'DATABASE_URL', 
         cast=db_url,
-        default=f"sqlite:///{BASE_DIR / 'db.sqlite3'}"
+        default=f"sqlite:///{BASE_DIR / 'db.sqlite3'}"  # Default for local development
     )
 }
 
@@ -94,11 +93,15 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR / 'static'] 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage' 
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Media Files
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  
+if DEBUG:
+    MEDIA_URL = '/media/'
+    MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  # Local storage for development
+else:
+    MEDIA_URL = '/media/'
+    DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'  # Cloudinary for production
 
 # Default Primary Key Field Type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
@@ -121,7 +124,7 @@ SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
 X_FRAME_OPTIONS = 'DENY'
 
-# Logging for Render
+# Logging for Render (or production environment)
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
@@ -143,6 +146,5 @@ CLOUDINARY_STORAGE = {
     'API_SECRET': config('CLOUDINARY_API_SECRET'),
 }
 
-# Set Cloudinary as the default file storage for media files
+# Set Cloudinary as the default file storage for media files in production
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
-

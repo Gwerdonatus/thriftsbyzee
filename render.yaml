@@ -10,3 +10,5 @@ services:
       python manage.py migrate
     startCommand: gunicorn thriftbyzee.wsgi
     staticPublishPath: staticfiles
+
+

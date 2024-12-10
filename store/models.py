@@ -4,7 +4,7 @@ from django.db import models
 
 class Dress(models.Model):
     name = models.CharField(max_length=100)
-    image = models.ImageField(upload_to='dresses/images')
+    image = models.ImageField(upload_to='dresses/')
     video = models.URLField(blank=True, null=True)  
     price = models.DecimalField(max_digits=10, decimal_places=2)
     availability = models.BooleanField(default=True)  # In stock or out of stock
