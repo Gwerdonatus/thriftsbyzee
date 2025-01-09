@@ -51,3 +51,5 @@ def checkout(request):
         return redirect('initiate_cart_payment', total_price=total_price_str, email=email)
 
     return render(request, 'store/checkout.html', {'cart': cart, 'total_price': total_price})
+
+
