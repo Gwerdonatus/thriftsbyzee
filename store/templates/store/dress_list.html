@@ -8,7 +8,7 @@
         {% for dress in dresses %}
         <div class="col-md-4 mb-4">
             <div class="card shadow-sm">
-                <img src="{{ dress.image.url }}" class="card-img-top" alt="{{ dress.name }}">
+                <img src="{{ dress.image.url|default:'https://via.placeholder.com/150' }}" class="card-img-top" alt="{{ dress.name }}">
                 <div class="card-body">
                     <h5 class="card-title">{{ dress.name }}</h5>
                     <p class="card-text">${{ dress.price }}</p>
