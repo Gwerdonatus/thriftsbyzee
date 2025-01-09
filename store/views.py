@@ -10,6 +10,7 @@ def dress_list(request):
     dresses = Dress.objects.all()
     return render(request, 'store/dress_list.html', {'dresses': dresses})
 
+
 # Dress detail page
 def dress_detail(request, dress_id):
     dress = get_object_or_404(Dress, id=dress_id)
@@ -25,7 +26,7 @@ def add_to_cart(request, dress_id):
     else:
         cart[str(dress_id)] = {
             'name': dress.name,
-            'price': float(dress.price), 
+            'price': float(dress.price),
             'size': dress.size,
             'quantity': 1,
         }
@@ -50,5 +51,3 @@ def checkout(request):
         return redirect('initiate_cart_payment', total_price=total_price_str, email=email)
 
     return render(request, 'store/checkout.html', {'cart': cart, 'total_price': total_price})
-
-

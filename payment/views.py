@@ -1,5 +1,5 @@
 from django.shortcuts import get_object_or_404
-from .models import Transaction  
+from .models import Transaction
 import json
 import requests
 from django.conf import settings
@@ -28,6 +28,7 @@ def verify_payment(request):
             return render(request, 'payment/payment_failed.html')
     except Exception as e:
         return JsonResponse({'error': str(e)}, status=500)
+
 
 def initiate_payment(request, dress_id):
     dress = get_object_or_404(Dress, id=dress_id)  # Fetch the dress
@@ -63,7 +64,6 @@ def initiate_payment(request, dress_id):
             return JsonResponse({'error': str(e)}, status=500)
 
     return render(request, 'payment/initiate_payment.html', {'dress': dress})
-
 
 
 def initiate_cart_payment(request, total_price, email):

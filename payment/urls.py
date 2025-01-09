@@ -7,5 +7,6 @@ urlpatterns = [
     path('initiate-cart-payment/<slug:total_price>/<email>/', views.initiate_cart_payment, name='initiate_cart_payment'),
 ]
 
-    
+
+ 
 
