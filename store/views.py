@@ -10,12 +10,14 @@ def dress_list(request):
     dresses = Dress.objects.all()
     return render(request, 'store/dress_list.html', {'dresses': dresses})
 
+
 # Dress detail page
 def dress_detail(request, dress_id):
     dress = get_object_or_404(Dress, id=dress_id)
     return render(request, 'store/dress_detail.html', {'dress': dress})
 
 
+# Add dress to cart
 def add_to_cart(request, dress_id):
     dress = get_object_or_404(Dress, id=dress_id)
     cart = request.session.get('cart', {})
@@ -25,7 +27,6 @@ def add_to_cart(request, dress_id):
     else:
         cart[str(dress_id)] = {
             'name': dress.name,
-            'price': float(dress.price), 
             'price': float(dress.price),
             'size': dress.size,
             'quantity': 1,
@@ -36,11 +37,13 @@ def add_to_cart(request, dress_id):
     return redirect('view_cart')
 
 
+# View cart
 def view_cart(request):
     cart = request.session.get('cart', {})
     return render(request, 'store/cart.html', {'cart': cart})
 
 
+# Checkout
 def checkout(request):
     cart = request.session.get('cart', {})
     total_price = sum(item['price'] * item['quantity'] for item in cart.values())
@@ -51,3 +54,8 @@ def checkout(request):
         return redirect('initiate_cart_payment', total_price=total_price_str, email=email)
 
     return render(request, 'store/checkout.html', {'cart': cart, 'total_price': total_price})
+
+
+
+def initiate_cart_payment(request, total_price, email):
+    return redirect(reverse('payment:initiate_payment') + f"?total_price={total_price}&email={email}")
