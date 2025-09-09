@@ -1,29 +1,29 @@
-Title: ThriftbyZee – Responsive Fashion Website
+# ThriftByZee – Fashion Business Website 👗
 
-Overview:
-ThriftbyZee is a modern and user-friendly Django-powered website for a thrift fashion brand. It is designed to help a small business sell products online with a clean interface, fast loading, and strong brand visuals.
+A responsive fashion e-commerce style website built with **Django, JavaScript, Bootstrap, and CSS**.  
+This project was developed for a **small fashion brand** to showcase products and attract customers online.
 
-Features (planned/in progress):
+## 🚀 Live Demo
+https://thriftsbyzee.onrender.com/
 
-Product listing & categorization
+## ✨ Features
+- Product catalog with images
+- Mobile-friendly and responsive design
+- Clean UI for easy navigation
+- Deployed for client usage
 
-User registration & login
+## 🛠️ Tech Stack
+- **Backend:** Django
+- **Frontend:** HTML, CSS, Bootstrap, JavaScript
+- **Database:** SQLite (default) / PostgreSQL (production ready)
+- **Deployment:** Netlify / Render
 
-Add to cart & checkout (future Paystack integration)
+## 📸 Screenshots
 
-Admin dashboard for managing inventory
 
-Responsive UI
-
-Tech Stack:
-
-Django
-
-HTML/CSS
-
-Bootstrap
-
-JavaScript
-
-Status: Currently in development.
-Deployment: Will be hosted on Render but currently down and inactive.
+## 📦 Installation
+```bash
+git clone https://github.com/Gwerdonatus/thriftsbyzee.git
+cd thriftsbyzee
+pip install -r requirements.txt
+python manage.py runserver
